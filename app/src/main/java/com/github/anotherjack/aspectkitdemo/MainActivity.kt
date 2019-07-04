@@ -4,6 +4,7 @@ import android.Manifest
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.github.anotherjack.aspectkit.annotation.RequestPermissions
+import com.github.anotherjack.aspectkit.annotation.ShowConfirm
 import com.github.anotherjack.aspectkitdemo.ext.toast
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -20,5 +21,10 @@ class MainActivity : AppCompatActivity() {
     @RequestPermissions(Manifest.permission.CAMERA,Manifest.permission.WRITE_EXTERNAL_STORAGE)
     private fun takePhoto(){
         toast("咔嚓！拍了一张照片！")
+    }
+
+    @ShowConfirm(message = "确认退出App？",positiveText = "我要退出", negativeText = "算了")
+    override fun onBackPressed() {
+        super.onBackPressed()
     }
 }
